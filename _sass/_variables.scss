@@ -1,27 +1,51 @@
-
 //
 // VARIABLES
 //
+html {
+    --lightGray: #eee;
+    --backgroundColor: #fff;
 
-// Colors
-$blue: #4183C4;
+    --textColor: #444;
+    --titleColor: #222;
+    --subtextColor: #999;
 
-// Grays
-$black: #000;
-$darkerGray: #222;
-$darkGray: #333;
-$gray: #666;
-$lightGray: #eee;
-$white: #fff;
+    // Colors
+    --linkColor: #4183c4;
 
-// Font stacks
-$helvetica: Helvetica, Arial, sans-serif;
-$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$georgia: Georgia, serif;
+    // Grays
+    --black: #000;
+
+    // Font stacks
+    --helvetica: Helvetica, Arial, sans-serif;
+    --helveticaNeue: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --paragraphFont: 'Merriweather', 'Georgia', serif;
+    --footerColor: #eee;
+}
+
+html.dark {
+  --backgroundColor: #383448;
+  --lightGray: #ddd;
+
+  --textColor: #ddd;
+  --titleColor: #fff;
+  --subtextColor: 999;
+
+  // Colors
+  --linkColor: rgb(199, 255, 192);
+
+  // Grays
+  --black: #000;
+
+  // Font stacks
+  --helvetica: Helvetica, Arial, sans-serif;
+  --helveticaNeue: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --paragraphFont: 'Merriweather', 'Georgia', serif;
+  --footerColor: #141422;
+}
 
 // Mobile breakpoints
 @mixin mobile {
-  @media screen and (max-width: 640px) {
-    @content;
-  }
+    @media screen and (max-width: 640px) {
+        @content;
+    }
 }

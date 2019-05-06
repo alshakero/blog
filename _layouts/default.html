@@ -1,51 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+    <head>
+        <title>
+            {% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} –
+            {{ site.description }}
+        </title>
 
-    {% include meta.html %}
+        {% include meta.html %}
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ site.baseurl }}/style.css"
+        />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="{{ site.name }} - {{ site.description }}"
+            href="{{ site.baseurl }}/feed.xml"
+        />
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
+        <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    </head>
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+    <body>
+        <div class="wrapper-masthead">
+            <div class="lightmode-container">
+                <button>🌙</button>
+            </div>
+            <div class="container">
+                <header class="masthead clearfix">
+                    <a href="{{ site.baseurl }}/" class="site-avatar"
+                        ><img src="{{ site.avatar }}"
+                    /></a>
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
+                    <div class="site-info">
+                        <h1 class="site-name">
+                            <a href="{{ site.baseurl }}/">{{ site.name }}</a>
+                        </h1>
+                        <p class="site-description">{{ site.description }}</p>
+                    </div>
 
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
-      </div>
-    </div>
+                    <nav>
+                        <a href="{{ site.baseurl }}/">Blog</a>
+                        <a href="https://omaralshaker.com">About</a>
+                    </nav>
+                </header>
+            </div>
+        </div>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
+        <div id="main" role="main" class="container">
+            {{ content }}
+        </div>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
+        <div class="wrapper-footer">
+            <div class="container">
+                <footer class="footer">
+                    {% include svg-icons.html %}
+                </footer>
+            </div>
+        </div>
 
-    {% include analytics.html %}
-  </body>
+        {% include analytics.html %}
+    </body>
 </html>
+
+<script>
+    let theme = window.localStorage.getItem('theme') || 'dark';
+    const themeToggle = document.querySelector('.lightmode-container button');
+
+    function refresh() {
+        themeToggle.innerText = theme === 'dark' ? '☀️' : '🌙';
+        themeToggle.title = `Switch to ${
+            theme === 'dark' ? 'light' : 'dark'
+        } mode`;
+
+        if (theme === 'dark') {
+            document.documentElement.classList.remove('light');
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+        }
+
+        window.localStorage.setItem('theme', theme);
+    }
+    themeToggle.onclick = () => {
+        // only transition on clicks to avoid transition upon navigation
+        document.body.style.transition = `background-color 0.5s ease-in-out`;
+        theme = theme === 'dark' ? 'light' : 'dark';
+        refresh();
+        setTimeout(() => (document.body.style.transition = 'unset'), 500);
+    };
+    refresh();
+</script>
