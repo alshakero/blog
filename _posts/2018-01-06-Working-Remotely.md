@@ -1,6 +1,7 @@
 ---
 layout: post
 title: My Thoughts on Working Remotely, One Year in
+type: tech
 ---
 
 ![Barefoot to the Moon album cover by Echoes]({{ site.baseurl }}/images/postsImages/moon.jpg)

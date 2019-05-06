@@ -3,10 +3,14 @@ layout: default
 ---
 
 <div class="posts">
-  {% for post in site.posts %}
+    <h1>Posts</h1>
+    {% for post in site.posts %}
     <article class="post">
-      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-      <time>{{ post.date | date: "%B %e, %Y" }}</time>
+        <h2>
+            <span title="Post type" class="type-badge">{{ post.type }}</span
+            ><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        </h2>
+        <time>{{ post.date | date: '%B %e, %Y' }}</time>
     </article>
-  {% endfor %}
+    {% endfor %}
 </div>

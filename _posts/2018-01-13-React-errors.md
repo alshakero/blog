@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The True Delight of React’s Error and Warning Messages
+type: tech
 ---
 An epitome of code kindness
 
@@ -22,7 +23,9 @@ Now imagine, in a sci-fi kind of way, that there is an imaginary software techno
 
 Of all the libraries and packages I’ve used in the last ~10 years, I haven’t seen a library where errors and warnings are as beautiful. Developers, including me, usually try to detect errors that break their own code and report them to the user along with the data they have on hand (scope?). Maybe mention the most common mistake that can cause the error along with an automatically-generated stack trace and that’s it.
 
-    TypeError: undefined is not an object
+```js
+TypeError: undefined is not an object
+```
 
 But with React, the library works overtime trying to guess for you what went wrong. The error guessing effort is quite obvious and it’s tremendously helpful; it saves you a lot of time debugging and tries its best to save your day.
 
@@ -44,7 +47,9 @@ What’s wrong with this component?
 
 Here is the message:
 
-    Warning: MyComponent(…): No `render` method found on the returned component instance: you may have forgotten to define `render`.
+```js
+Warning: MyComponent(…): No `render` method found on the returned component instance: you may have forgotten to define `render`.
+```
 
 Beautiful, isn’t it? **The component name** and a correct suggestion. Super easy to fix.
 
@@ -88,7 +93,9 @@ What’s the issue?
 
 Here is the warning:
 
-    Warning: Cannot update during an existing state transition (such as within `render` or another component’s constructor). Render methods should be a pure function of props and state; constructor side-effects are an anti-pattern, but can be moved to `componentWillMount`.
+```js
+Warning: Cannot update during an existing state transition (such as within `render` or another component’s constructor). Render methods should be a pure function of props and state; constructor side-effects are an anti-pattern, but can be moved to `componentWillMount`.
+```
 
 ### 4. Not quite obvious
 
@@ -107,11 +114,11 @@ class MyComponent extends React.Component {
 What’s the issue?
 
 Here is the message:
+```bash
+Warning: setState(…): Can only update a mounted or mounting component. This usually means you called setState() on an unmounted component. This is a no-op.
 
-    Warning: setState(…): Can only update a mounted or mounting component. This usually means you called setState() on an unmounted component. This is a no-op.
-
-    Please check the code for the MyComponent component.
-
+Please check the code for the MyComponent component.
+```
 ### 5. Pure elegance
 
 ```js
@@ -125,9 +132,11 @@ ReactDOM.render(
 What’s wrong with type here?
 
 Here is the warning:
-
-    Warning: Received `true` for non-boolean attribute `type`. If this is expected, cast the value to a string.
-     in input
+```bash
+Warning: Received `true` for non-boolean attribute `type`.
+If this is expected, cast the value to a string.
+  in input
+```
 
 And that’s another example of an error that doesn’t affect React, rather affects your app.
 
@@ -147,11 +156,11 @@ ReactDOM.render(
 ```
 
 The two warnings:
+```sh
+Warning: <greetingComponent /> is using uppercase HTML. Always use lowercase HTML tags in React.
 
-    Warning: <greetingComponent /> is using uppercase HTML. Always use lowercase HTML tags in React.
-
-    Warning: The tag <greetingComponent> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
-
+Warning: The tag <greetingComponent> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+```
 I definitely fell for this at least once.
 
 ### 7. OK I fixed it, but it still doesn’t work
@@ -173,12 +182,14 @@ What’s wrong now?
 
 The message:
 
-    Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.
+```bash
+Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.
+```
 
 Yup, it should be:
-
-    ReactDOM.render(<GreetingComponent />, document.getElementById(“root”));
-
+```js
+    ReactDOM.render(<GreetingComponent />, document.getElementById("root"));
+```
 ### 8. A very common mistake in the first couple days
 
 ```js
@@ -198,11 +209,11 @@ ReactDOM.render(
 What’s up here?
 
 The message:
-
-    Warning: Invalid DOM property `class`. Did you mean `className`?
-     in h1 (created by GreetingComponent)
-     in GreetingComponent
-
+```bash
+Warning: Invalid DOM property `class`. Did you mean `className`?
+  in h1 (created by GreetingComponent)
+  in GreetingComponent
+```
 Enough data to land you exactly at your mistake
 
 ### 9. Why don’t you come back? 🎼
@@ -226,13 +237,13 @@ I was trying to hide what I felt inside
 Until you passed me by
 You said you’d return 
 Will you ever return? 🎵
-
-    Uncaught Error: GreetingComponent(…): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.
-
+```bash
+Uncaught Error: GreetingComponent(…): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.
+```
 ## 10. And the one that doesn’t need an example:
-
-    You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
-
+```bash
+You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+```
 *This one is a personal favorite.*
 
 Obviously, I haven’t used every framework and library ever existed. And there may be better examples of nice and helpful error messages. But as a frontend developer, I can safely say that React easily stands out. I’ve been inspired by it and now I am trying my best to guess the areas my code users could make mistakes, and provide them with eleborate and helpful error messages when they do. For I am a true believer that a better developer experience means a better world.
