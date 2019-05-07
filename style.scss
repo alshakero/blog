@@ -378,6 +378,12 @@ html.light {
     }
 }
 
+cite {
+    font-size: 0.7em;
+    font-style: italic;
+    opacity: 0.7;
+    display: block;
+}
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start

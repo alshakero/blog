@@ -1,7 +1,9 @@
 ---
 layout: post
 title: The True Delight of React’s Error and Warning Messages
+description: An epitome of code kindness
 type: tech
+opengraphImage: /images/postsImages/the-sign-you-need.jpg
 ---
 An epitome of code kindness
 

@@ -2,6 +2,8 @@
 layout: post
 title: My Thoughts on Working Remotely, One Year in
 type: tech
+opengraphImage: /images/postsImages/moon.jpg
+description: The social, the efficiency and the health factors
 ---
 
 ![Barefoot to the Moon album cover by Echoes]({{ site.baseurl }}/images/postsImages/moon.jpg)

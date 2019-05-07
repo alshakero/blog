@@ -3,6 +3,7 @@ layout: post
 title: Leveraging HTML5 form validation & validation UI in React — Validate forms in 2 mins
 description: The power of reportValidity
 type: tech
+opengraphImage: /images/postsImages/errors.jpg
 ---
 
 ![HTML5 validation error]({{ site.baseurl }}/images/postsImages/errors.jpg)
