@@ -1,18 +1,83 @@
-    <meta charset="utf-8" />
-    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<meta charset="utf-8" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"
+    name="viewport"
+/>
+<meta
+    name="keywords"
+    content="Blog, tech blog, opinions, Web development, React, UI design, PHP, JavaScript, HTML5"
+/>
+<meta name="author" content="Omar Alshaker" />
+<meta name="copyright" content="© Copyright 2019 - Omar Alshaker" />
+<meta name="robots" content="index, follow" />
+<meta name="location" content="Warsaw, Poland" />
 
-    {% if page.excerpt %}
-    <meta name="description" content="{{ page.excerpt| strip_html }}" />
-    <meta property="og:description" content="{{ page.excerpt| strip_html }}" />
-    {% else %}
-    <meta name="description" content="{{ site.description }}">
-    <meta property="og:description" content="{{ site.description }}" />
-    {% endif %}
-    <meta name="author" content="{{ site.name }}" />
+<meta
+    property="og:url"
+    content="{{ site.url }}{{ site.baseurl }}/{{ page.slug }}"
+/>
+<meta
+    property="og:title"
+    content="{{ page.title | default: 'Omar Alshaker - Blog' }}"
+/>
+<meta property="og:site-name" content="Omar Alshaker" />
+<meta
+    name="description"
+    content="{{
+        page.subtitle | default: 'My mostly but not fully tech blog'
+    }}"
+/>
+<meta
+    name="og:description"
+    content="{{
+        page.subtitle | default: 'My mostly but not fully tech blog'
+    }}"
+/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@alshakero" />
+<meta name="twitter:creator" content="@alshakero" />
+<meta
+    name="twitter:title"
+    content="{{ page.title | default: 'Omar Alshaker - Blog' }}"
+/>
+<meta
+    name="twitter:description"
+    content="{{
+        page.subtitle | default: 'My mostly but not fully tech blog'
+    }}"
+/>
 
-    {% if page.title %}
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="twitter:title" content="{{ page.title }}" />
-    {% endif %}
+<meta itemprop="name" content="Omar Alshaker" />
+<meta
+    itemprop="description"
+    content="{{
+        page.subtitle | default: 'My mostly but not fully tech blog'
+    }}"
+/>
+
+{% if page.opengraphImage != nil %}
+<meta itemprop="image" content="{{ site.baseurl }}{{ page.opengraphImage }}" />
+<meta
+    name="twitter:image:src"
+    content="{{ site.baseurl }}{{ page.opengraphImage }}"
+/>
+<meta
+    property="og:image"
+    content="{{ site.baseurl }}{{ page.opengraphImage }}"
+/>
+{% elsif page.opengraphImage == nil %}
+<meta
+    itemprop="image"
+    content="{{ site.baseurl }}/images/opengraph-image.jpg"
+/>
+<meta
+    name="twitter:image:src"
+    content="{{ site.baseurl }}/images/opengraph-image.jpg"
+/>
+<meta
+    property="og:image"
+    content="{{ site.baseurl }}/images/opengraph-image.jpg"
+/>
+{% else %} {% endif %}

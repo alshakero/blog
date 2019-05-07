@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to Setup Your Web App Manifest Dynamically Using Javascript
-description: From a URL or a JSON object
+subtitle: From a URL or a JSON object
 type: tech
 opengraphImage: /images/postsImages/manifest.jpg
 ---
