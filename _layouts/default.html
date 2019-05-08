@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
     <head>
-
+        <script async src="{{ site.baseurl }}/jsLibs/turbolinks.js"></script>
         <title>
             {% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} –
             {{ site.description }}
@@ -71,31 +71,38 @@
 </html>
 
 <script>
-    let theme = window.localStorage.getItem('theme') || 'dark';
-    const themeToggle = document.querySelector('.lightmode-container button');
+    (function() {
+        let theme = window.localStorage.getItem('theme') || 'dark';
+        let themeToggle = document.querySelector('.lightmode-container button');
 
-    function refresh() {
-        themeToggle.innerText = theme === 'dark' ? '☀️' : '🌙';
-        themeToggle.title = `Switch to ${
-            theme === 'dark' ? 'light' : 'dark'
-        } mode`;
+        function refresh() {
+            themeToggle.innerText = theme === 'dark' ? '☀️' : '🌙';
+            themeToggle.title = `Switch to ${
+                theme === 'dark' ? 'light' : 'dark'
+            } mode`;
 
-        if (theme === 'dark') {
-            document.documentElement.classList.remove('light');
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            document.documentElement.classList.add('light');
+            if (theme === 'dark') {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            }
+            window.localStorage.setItem('theme', theme);
         }
 
-        window.localStorage.setItem('theme', theme);
-    }
-    themeToggle.onclick = () => {
-        // only transition on clicks to avoid transition upon navigation
-        document.body.style.transition = `background-color 0.5s ease-in-out`;
-        theme = theme === 'dark' ? 'light' : 'dark';
+        themeToggle.onclick = () => {
+            // only transition on clicks to avoid transition upon navigation
+            document.body.style.transition = `background-color 0.5s ease-in-out`;
+            theme = theme === 'dark' ? 'light' : 'dark';
+            refresh();
+            setTimeout(() => (document.body.style.transition = 'unset'), 500);
+        };
+
+        window.addEventListener('load', () => {
+            refresh();
+        });
+
         refresh();
-        setTimeout(() => (document.body.style.transition = 'unset'), 500);
-    };
-    refresh();
+    })();
 </script>
