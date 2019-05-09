@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Not found</title>
+    </head>
+    <body>
+        <style>
+            body,
+            html {
+                margin: 0;
+                height: 100%;
+            }
+            .wrapper {
+                display: grid;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                justify-items: center;
+            }
+            .wrapper > * {
+                grid-area: 1 / 1;
+                width: min-content;
+            }
+            .wrapper > canvas {
+                z-index: 0;
+            }
+
+            .wrapper > h1 {
+                color: #fff;
+                font-size: 2.5em;
+                padding: 10px;
+                background: #000;
+                line-height: 1em;
+                padding-top: 0.33em;
+                vertical-align: middle;
+                transform: skew(-15deg);
+                font-family: 'Courier New', Courier, monospace;
+                user-select: none;
+            }
+        </style>
+
+        <div class="wrapper">
+            <canvas> </canvas>
+            <h1>404 NOT FOUND</h1>
+        </div>
+
+        <script>
+            const canvas = document.querySelector('canvas');
+
+            let currentA = 0.5;
+            let currentB = 0.5;
+
+            let centerx = window.innerWidth / 2;
+            let centery = window.innerHeight / 2;
+
+            let currentPureA = 0;
+            let currentPureB = 0;
+
+            let context;
+
+            let keepDrawing = true;
+
+            function plotSpiral() {
+                context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                context.moveTo(centerx, centery);
+
+                context.beginPath();
+
+                const a = currentA * 100;
+                const b = currentB * 10;
+                for (let i = a; i < a + 6000; i++) {
+                    const angle = 0.1 * i;
+                    const x = centerx + (a + b * angle) * Math.cos(angle);
+                    const y = centery + (a + b * angle) * Math.sin(angle);
+                    context.lineWidth = currentA * 40;
+                    context.lineTo(x, y);
+                }
+
+                context.strokeStyle =
+                    'hsl(' + currentPureA * 360 + ',100%,60%)';
+                context.stroke();
+                keepDrawing && requestAnimationFrame(plotSpiral);
+            }
+            window.addEventListener('load', () => {
+                keepDrawing = true;
+
+                const windowResize = () => {
+                    const rect = canvas.parentElement.getBoundingClientRect();
+                    canvas.width = rect.width;
+                    canvas.height = rect.height;
+
+                    centerx = window.innerWidth / 2;
+                    centery = window.innerHeight / 2;
+                };
+                windowResize();
+
+                context = canvas.getContext('2d');
+                plotSpiral(context);
+
+                const mouseMove = event => {
+                    currentPureA = event.clientX / window.innerWidth;
+                    currentPureB = event.clientY / window.innerHeight;
+
+                    currentA = Math.pow(currentPureA + 0.5, 2);
+                    currentB = Math.pow(currentPureB + 0.5, 2);
+                };
+                const deviceOrientation = event => {
+                    currentPureA = event.gamma / 90;
+                    currentPureB = event.beta / 90;
+
+                    currentA = Math.pow(currentPureA + 0.5, 2);
+                    currentB = Math.pow(currentPureB + 0.5, 2);
+                };
+
+                window.addEventListener('mousemove', mouseMove);
+                window.addEventListener('resize', windowResize);
+                window.addEventListener('deviceorientation', deviceOrientation);
+            });
+        </script>
+    </body>
+</html>
