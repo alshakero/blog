@@ -20,12 +20,12 @@ Because it's the simplest app that I could think of that needs a nice cocktail o
 1. **State management**: it needs across components two-way data-binding. As the diagram below shows. I divided the app into four components. 
 ![State]({{ site.baseurl }}/images/postsImages/SvelteState.png)
 The components are: 
-- `App`: the centric components where the game logic exists. This components handles key presses, moves the `Bird` components (passes new X and Y), increments the score, and determines if the game is over. 
-- `Bird`: this components accepts X and Y coordinates and renders the bird in those coordinates.
+- `App`: the centric components where the game logic exists. This component handles key presses, moves the `Bird` components (passes new X and Y), increments the score, and determines if the game is over. 
+- `Bird`: this component accepts X and Y coordinates and renders the bird in those coordinates.
 - `World`: the animated pipes. Since the bird is always at the mid-point of the X-Axis, I only needed to worry about the Ys to determine whether the bird collided with the pipes. This componenet animates the pipes and upsends the collision points (top-Y and the bottom-Y) to `App` component.
 - `Score`: Just renders the score at top right corner.
 
-2. **DOM access**: It plays some audio loop using an `<audio />` HTML5 tag. And I had to call `player.pause()` when the game is over. I needed to grab the reference to this elements to do that.
+2. **DOM access**: It plays some audio loop using an `<audio />` HTML5 tag. And I had to call `player.pause()` when the game is over. I needed to grab the reference to this element to do that.
 
 3. **CSS animations**: the easiest way to implement the flappy wings.
 
@@ -71,7 +71,7 @@ Especially when you need to pass `value` to a child component. In React, you'll 
 Quite close to when you write a vanilla JS app, some cleanup might still needed after you're done with those. But it is certainly more straight forward than using them with hooks. A few people found these cases confusing with React hooks, including myself. See [this](https://github.com/facebook/react/issues/14195) and [this](https://overreacted.io/making-setinterval-declarative-with-react-hooks/). In Svelte, they're as confusing as they're in vanilla JS.
 
 #### No need for CSS modules or any external scoping mechanisms
-Similar to Vue.js, most credit goes to the Single File Components model. You just write your CSS next to your HTML and JS. This might result in a lot of repeated CSS across the app. I'm not aware of a solution to this problem. In this example, DRY wasn't a issue so no good insight could be drawn. But other than that it was a breeze. 
+Similar to Vue.js, most credit goes to the Single File Components model. You just write your CSS next to your HTML and JS. This might result in a lot of repeated CSS across the app since you can't import external since. But is that a bug or a feature? You won't look for the rule that is affecting your styles anymore. It's for sure next to the element it's stylizing.
 
 #### Window events are wholesome
 In this game, I needed to add event listeners to `window`. This would indeed be straight forward in React, hooks or otherwise, but can it be this clean?
