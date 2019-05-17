@@ -9,7 +9,7 @@ opengraphImage: /images/postsImages/svelte.png
 
 I have been so excited to try out Svelte v3 since it came out in late April. But I wasn't sure what to build. I built TodoMVC app and it didn't feel enough to test out a framework, took me around 30 mins. Plus, [it's already built](https://github.com/sveltejs/svelte-todomvc) by Svelte team and this made it feel less insightful for some reason. 
 
-I ended up building a small two-hours buggy version of Flappy Bird than you can play [here](https://alshakero.github.io/svelte-hello/) (use spacebar to jump). Or view the source [here](https://github.com/alshakero/svelte-hello). The bundle size of this game is 5KB gzipped ⚡.
+I ended up building a small two-hours buggy version of Flappy Bird that you can play [here](https://alshakero.github.io/svelte-hello/) (use spacebar to jump). Or view the source [here](https://github.com/alshakero/svelte-hello). The bundle size of this game is 5KB gzipped ⚡.
 
 ## Disclaimer
 I realize this is a small app and it probably does not represent decent team-built apps. It is meant to give me a rough idea about Svelte. And I'm sharing this rough idea with you. No conclusions made here. But feel free to make your own 😁
