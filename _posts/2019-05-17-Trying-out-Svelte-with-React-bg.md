@@ -17,12 +17,12 @@ I realize this is a small app and it probably does not represent decent team-bui
 ## Why Flappy Bird?
 Because it's the simplest app that I could think of that needs a nice cocktail of **State management**, **DOM access**, **CSS animations**, **Event handling**, **Control flow** and **SVG**. 
 
-1. **State management**: it needs across components two-way data-binding. As the diagram below shows. I divided the app into four components. 
+1. **State management**: it needs across component two-way data-binding. As the diagram below shows. I divided the app into four components. 
 ![State]({{ site.baseurl }}/images/postsImages/SvelteState.png)
 The components are: 
-- `App`: the centric components where the game logic exists. This component handles key presses, moves the `Bird` components (passes new X and Y), increments the score, and determines if the game is over. 
-- `Bird`: this component accepts X and Y coordinates and renders the bird in those coordinates.
-- `World`: the animated pipes. Since the bird is always at the mid-point of the X-Axis, I only needed to worry about the Ys to determine whether the bird collided with the pipes. This componenet animates the pipes and upsends the collision points (top-Y and the bottom-Y) to `App` component.
+- `App`: the centric component where the game logic exists. This component handles key presses, moves the `Bird` component (passes new X and Y), increments the score, and determines if the game is over. 
+- `Bird`: this component accepts X and Y coordinates and renders the bird at those coordinates.
+- `World`: the animated pipes. Since the bird is always at the mid-point of the X-Axis, I only needed to worry about the Ys to determine whether the bird collided with the pipes. This component animates the pipes and upsends the collision points (top-Y and the bottom-Y) to `App` component.
 - `Score`: Just renders the score at top right corner.
 
 2. **DOM access**: It plays some audio loop using an `<audio />` HTML5 tag. And I had to call `player.pause()` when the game is over. I needed to grab the reference to this element to do that.
@@ -44,7 +44,7 @@ The components are:
 The unique thing about Svelte is that it tries its best to get out of the way. It's there, but you mostly notice its existence when it is trying to help you. I didn't feel I was building a Svelte app the way you feel when you build a React app. I was just building an app. Let me explain.
 
 #### I didn't have to think about state management
-What is even state management? Svelte makes it feel like an ancient problem. You write JavaScript and use your variables (read and write) around the component. If you need to use some variable across components you do `<Component bind:name={myNameVar}>`. Then in your child components you use `name` like a good ol' JS variable and the parent component will re-render when needed.
+What is even state management? Svelte makes it feel like an ancient problem. You write JavaScript and use your variables (read and write) around the component. If you need to use some variable across components you do `<Component bind:name={myNameVar}>`. Then in your child component you use `name` like a good ol' JS variable and the parent component will re-render when needed.
 
 This `bind` keyword is the first time I needed to consult the docs. The second thing that I needed to hit Google for is array mutation. It turns out that Svelte doesn't handle array mutations or any type of mutations such as `arr.push(newItem)`. I ended up doing `arr = [newItem, ...arr]`, it was a minor bummer that the framework didn't take care of it. Since it took care of all other state updates.
 
@@ -68,13 +68,13 @@ value = 5;
 Especially when you need to pass `value` to a child component. In React, you'll have to find a way to notify the parent about an update to `value` on your own. In Svelte `<ChildComponent bind:value={value}>` would do.
 
 #### Async calls like `setTimeout`, `setInterval` and `requestAnimationFrame` are easy
-Quite close to when you write a vanilla JS app, some cleanup might still needed after you're done with those. But it is certainly more straight forward than using them with hooks. A few people found these cases confusing with React hooks, including myself. See [this](https://github.com/facebook/react/issues/14195) and [this](https://overreacted.io/making-setinterval-declarative-with-react-hooks/). In Svelte, they're as confusing as they're in vanilla JS.
+Quite close to when you write a vanilla JS app, some cleanup might still be needed after you're done with those. But it is certainly more straightforward than using them with hooks. A few people found these cases confusing with React hooks, including myself. See [this](https://github.com/facebook/react/issues/14195) and [this](https://overreacted.io/making-setinterval-declarative-with-react-hooks/). In Svelte, they're as confusing as they're in vanilla JS.
 
 #### No need for CSS modules or any external scoping mechanisms
-Similar to Vue.js, most credit goes to the Single File Components model. You just write your CSS next to your HTML and JS. This might result in a lot of repeated CSS across the app since you can't import external since. But is that a bug or a feature? You won't look for the rule that is affecting your styles anymore. It's for sure next to the element it's stylizing.
+Similar to Vue.js, most credit goes to the Single File Components model. You just write your CSS next to your HTML and JS. This might result in a lot of repeated CSS across the app since you can't import external CSS. But is that a bug or a feature? You won't search for the rule that is affecting your styles anymore, it's for sure next to the element it's stylizing.
 
 #### Window events are wholesome
-In this game, I needed to add event listeners to `window`. This would indeed be straight forward in React, hooks or otherwise, but can it be this clean?
+In this game, I needed to add event listeners to `window`. This would indeed be neat in React, hooks or otherwise, but can it be this clean?
 
 ```html
 <svelte:window on:keypress={handleKeypress} on:keyup={handleKeyup} />
