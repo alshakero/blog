@@ -133,7 +133,7 @@ If you create a `div` (don't use a div though, see point 2 of cons) with an infi
 ##### Pros
 
 1.  Automatic suspension when the tab isn't in focus. The event doesn't fire at all when the tab isn't in focus. You don't need to worry about jammed calls that will all run at once when the tab is in focus again.
-2.  Automatic clean up when the your hidden div is removed from the DOM. For example, if you have a React component that renders the time, you don't need to do anything on unmounting. The div will me removed and the event will not fire anymore.
+2.  Automatic clean up when the your hidden div is removed from the DOM. For example, if you have a React component that renders the time, you don't need to do anything on unmounting. The div will be removed and the event will not fire anymore.
 3.  This is subjective but the subscription logic is beautiful. Eg. `.addEventListener("animationiteration", fun)`.
 4.  Super clean way to delay the start of the timer by using `animation-delay`.
 
