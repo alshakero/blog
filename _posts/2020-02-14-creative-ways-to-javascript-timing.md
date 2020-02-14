@@ -9,7 +9,7 @@ opengraphImage: /images/postsImages/time.jpg
 ![Time]({{ site.baseurl }}/images/postsImages/time.jpg)
 <cite>Photo by Lukas Blazek on Unsplash</cite>
 
-This article assumes the availability for Web APIs, therefore, most methods suggested here don't work in NodeJs.
+This article assumes the availability for Web APIs, therefore, most methods suggested here don't work in NodeJS.
 
 ## Using an infinite synchronous loop in a Web Worker (not Service Worker)
 
