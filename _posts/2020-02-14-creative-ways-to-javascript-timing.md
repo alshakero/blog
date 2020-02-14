@@ -257,6 +257,9 @@ Neat, isn't it?
      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
    ></iframe>
 
+## Bonus
+Using Web Audio API to get access to time. This is another great way to have access to accurate intervals and delays. It's explained in detail in [this great article](https://www.html5rocks.com/en/tutorials/audio/scheduling/) by Chris Wilson ([@cwilso](https://twitter.com/cwilso)). Thanks [@0ndras](https://twitter.com/0ndras) for the tip!
+
 ## This was fun
 
 I realize this is a niche article. But I felt compelled to write it because I always thought `setTimeout` and `setInterval` were the only paths towards asynchronous delays and intervals. But turns out there are a few other options! And who knows, someone might have some strange constraints and might find this useful.
