@@ -59,14 +59,14 @@
 />
 
 {% if page.opengraphImage != nil %}
-<meta itemprop="image" content="{{ site.baseurl }}{{ page.opengraphImage }}" />
+<meta itemprop="image" content="{{ site.baseurl }}/{{ page.opengraphImage }}" />
 <meta
     name="twitter:image"
-    content="{{ site.baseurl }}{{ page.opengraphImage }}"
+    content="{{ site.baseurl }}/{{ page.opengraphImage }}"
 />
 <meta
     property="og:image"
-    content="{{ site.baseurl }}{{ page.opengraphImage }}"
+    content="{{ site.baseurl }}/{{ page.opengraphImage }}"
 />
 {% elsif page.opengraphImage == nil %}
 <meta
