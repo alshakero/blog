@@ -206,7 +206,7 @@ If you do `animate.addEventListener('repeat', fun)`, your function will be calle
 
 ## Using Web Animations API
 
-[Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) allows you to animate DOM elements within JavaScript.
+[Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) allows you to animate DOM elements from within JavaScript.
 
 Interestingly, you can animate unmounted elements! This gives you access to a timing mechanism in pure JS (and Web APIs).
 
@@ -259,4 +259,4 @@ Neat, isn't it?
 
 ## This was fun
 
-I realize this is a niche article. But I felt compelled to write it because I always thought `setTimeout` and `setInterval` were the only path towards asynchronous delays and intervals. But turns out there are a few other options! And who knows, someone might have some strange constraints and might find this useful.
+I realize this is a niche article. But I felt compelled to write it because I always thought `setTimeout` and `setInterval` were the only paths towards asynchronous delays and intervals. But turns out there are a few other options! And who knows, someone might have some strange constraints and might find this useful.
