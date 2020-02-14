@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 4 Creative Ways for JavaScript Timing in Browsers
+title: 4 Creative Ways to JavaScript Timing in Browsers
 subtitle: Interesting alternatives for setTimeout, setInterval, and RAF
 type: tech
 opengraphImage: /images/postsImages/time.jpg
