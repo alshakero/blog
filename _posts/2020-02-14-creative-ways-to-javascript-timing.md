@@ -219,7 +219,7 @@ function ownSetTimeout(callback, duration) {
   const keyframes = new KeyframeEffect(div, [], { duration, iterations: 1 });
 
   const animation = new Animation(
-    keyframeRequestAnimationFrames,
+    keyframes,
     document.timeline
   );
 
